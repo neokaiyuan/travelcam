@@ -14,7 +14,7 @@ export default function Page() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar toggleDrawer={toggleDrawer} />
       <CameraScreen />
       <HistoryDrawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
     </div>
