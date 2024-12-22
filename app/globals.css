@@ -31,16 +31,6 @@ body {
   object-fit: cover;
 }
 
-.top-nav {
-  height: 50px;
-  background-color: #333;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-}
-
 .shutter-button {
   position: fixed;
   bottom: 30px;
@@ -62,4 +52,43 @@ body {
 .shutter-button:active {
   background-color: #f0f0f0;
   border-color: #999;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333; /* Dark neutral color */
+  padding: calc(env(safe-area-inset-top) + 10px) 20px 10px; /* Adjust top padding */
+  color: white;
+  height: auto; /* Ensure height is only as much as needed */
+}
+
+.navbar-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.icon-bar {
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  margin: 2px 0;
+}
+
+.icon-bar.long {
+  width: 30px;
+}
+
+.navbar-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-camera-icon img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }

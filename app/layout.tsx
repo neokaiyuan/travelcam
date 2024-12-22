@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { FaCamera } from "react-icons/fa";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,7 +29,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <nav className="top-nav">{/* Navigation bar content */}</nav>
+        <nav className="navbar">
+          <div className="navbar-icon">
+            <div className="icon-bar long"></div>
+            <div className="icon-bar short"></div>
+          </div>
+          <div className="navbar-title">Wandercam</div>
+          <div className="navbar-camera-icon">
+            <FaCamera size={24} color="white" />
+          </div>
+        </nav>
         <main>{children}</main>
       </body>
     </html>
