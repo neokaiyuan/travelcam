@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface HistoryDrawerProps {
   isOpen: boolean;
@@ -13,7 +14,9 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
     <>
       {isOpen && (
         <div className="drawer">
-          <button onClick={toggleDrawer}>Close</button>
+          <button onClick={toggleDrawer} className="drawer-close-button">
+            <AiOutlineClose size={24} />
+          </button>
           {/* Drawer content goes here */}
         </div>
       )}

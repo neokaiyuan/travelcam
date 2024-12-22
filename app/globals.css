@@ -106,3 +106,12 @@ body {
 .border {
   border-color: var(--border);
 }
+
+.drawer-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute; /* Use absolute positioning */
+  top: 10px;
+  right: 10px;
+}
