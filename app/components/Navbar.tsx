@@ -10,7 +10,7 @@ export default function Navbar({ toggleDrawer }: NavbarProps) {
     <nav className="navbar">
       <div className="navbar-icon">
         <button onClick={toggleDrawer}>
-          <FaBars size={24} color="white" />
+          <FaBars size={24} />
         </button>
       </div>
       <div className="navbar-title">Travelcam</div>
