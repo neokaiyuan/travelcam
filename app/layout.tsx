@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wandercam",
+  title: "Travelcam",
   description: "Camera-based travel guide",
 };
 

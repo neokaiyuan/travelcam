@@ -1,4 +1,4 @@
-# Wandercam
+# Travelcam
 
 Travel camera that explains, translates and recommends based on what you see
 

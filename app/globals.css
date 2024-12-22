@@ -78,13 +78,6 @@ body {
 .navbar-title {
   font-size: 1.5em;
   font-weight: bold;
-  color: var(--accent);
-}
-
-.navbar-camera-icon img {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
 }
 
 .drawer {

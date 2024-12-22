@@ -13,9 +13,9 @@ export default function Navbar({ toggleDrawer }: NavbarProps) {
           <FaBars size={24} color="white" />
         </button>
       </div>
-      <div className="navbar-title">Wandercam</div>
-      <div className="navbar-camera-icon">
-        <FaCamera size={24} color="white" />
+      <div className="navbar-title">Travelcam</div>
+      <div className="navbar-icon">
+        <FaCamera size={24} />
       </div>
     </nav>
   );
