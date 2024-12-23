@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { HistoryElement } from "../types/types"; // Ensure this import is correct
+import { HistoryElement } from "../types/types";
+import "./HistoryDrawer.css";
 
 interface HistoryDrawerProps {
   isOpen: boolean;
@@ -43,7 +44,7 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                 />
                 <div className="text-container">
                   <p>{new Date(element.timeImageTaken).toLocaleString()}</p>
-                  <p className="single-line-text">
+                  <p className="preview-text">
                     {element.explanation.replace(/\n/g, " ")}
                   </p>
                 </div>
