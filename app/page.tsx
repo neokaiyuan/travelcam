@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import CameraScreen from "./components/CameraScreen";
 import ExplanationScreen from "./components/ExplanationScreen";
@@ -13,7 +13,7 @@ export default function RootPage() {
     useState<boolean>(false);
   const [history, setHistory] = useState<HistoryElement[]>([]);
   const [selectedHistoryElementIndex, setSelectedHistoryElementIndex] =
-    useState<number | null>(null);
+    useState<number>(-1); // -1 means no selected history element; it does not access last element in array
 
   function toggleDrawer() {
     setIsDrawerOpen(!isDrawerOpen);
@@ -30,6 +30,7 @@ export default function RootPage() {
       timeImageTaken: new Date(),
       base64Image: base64Image,
       explanation: "",
+      isExplanationFetched: false,
     };
     setHistory([...history, newHistoryElement]);
     // Select the latest photo in history drawer

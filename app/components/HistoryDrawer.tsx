@@ -6,7 +6,7 @@ interface HistoryDrawerProps {
   isOpen: boolean;
   toggleDrawer: () => void;
   history: HistoryElement[];
-  selectedHistoryElementIndex: number | null;
+  selectedHistoryElementIndex: number;
   selectHistoryElement: (index: number) => void;
 }
 
