@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Ensures space between the icon and title */
-  padding: 10px;
+  padding: 10px 20px;
 }
 
 .drawer-title {
