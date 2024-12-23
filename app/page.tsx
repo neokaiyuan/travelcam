@@ -42,6 +42,12 @@ export default function RootPage() {
     setShowExplanationScreen(false);
   };
 
+  const selectHistoryElement = (index: number) => {
+    setSelectedHistoryElementIndex(index);
+    setIsDrawerOpen(false);
+    setShowExplanationScreen(true);
+  };
+
   return (
     <div>
       <Navbar toggleDrawer={toggleDrawer} showCamera={showCamera} />
@@ -59,7 +65,7 @@ export default function RootPage() {
         toggleDrawer={toggleDrawer}
         history={history}
         selectedHistoryElementIndex={selectedHistoryElementIndex}
-        setSelectedHistoryElementIndex={setSelectedHistoryElementIndex}
+        selectHistoryElement={selectHistoryElement}
       />
     </div>
   );

@@ -7,17 +7,15 @@ interface HistoryDrawerProps {
   toggleDrawer: () => void;
   history: HistoryElement[];
   selectedHistoryElementIndex: number | null;
-  setSelectedHistoryElementIndex: React.Dispatch<
-    React.SetStateAction<number | null>
-  >;
+  selectHistoryElement: (index: number) => void;
 }
 
 const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
   isOpen,
   toggleDrawer,
-  selectedHistoryElementIndex,
-  setSelectedHistoryElementIndex,
   history,
+  selectedHistoryElementIndex,
+  selectHistoryElement,
 }) => {
   return (
     <>
@@ -33,7 +31,7 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
             {history.map((element, index) => (
               <button
                 key={index}
-                onClick={() => setSelectedHistoryElementIndex(index)}
+                onClick={() => selectHistoryElement(index)}
                 className={`history-element ${
                   selectedHistoryElementIndex === index ? "selected" : ""
                 }`}
