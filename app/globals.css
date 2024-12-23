@@ -24,6 +24,28 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--navbar-drawer-bg);
+  padding: calc(env(safe-area-inset-top) + 10px) 20px 10px; /* Adjust top padding */
+  color: var(--foreground);
+  height: auto; /* Ensure height is only as much as needed */
+}
+
+.navbar-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.navbar-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 .camera-screen {
   position: relative;
   height: calc(100vh - 50px); /* Adjust based on nav bar height */
@@ -58,28 +80,6 @@ body {
   border-color: #999;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--navbar-drawer-bg);
-  padding: calc(env(safe-area-inset-top) + 10px) 20px 10px; /* Adjust top padding */
-  color: var(--foreground);
-  height: auto; /* Ensure height is only as much as needed */
-}
-
-.navbar-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.navbar-title {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
 .drawer {
   position: fixed;
   left: 0;
@@ -89,22 +89,53 @@ body {
   background-color: var(--navbar-drawer-bg);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  /* Add more styles as needed */
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures space between the icon and title */
+  padding: 10px;
 }
 
 .drawer-title {
-  color: var(--accent);
-}
-
-.border {
-  border-color: var(--border);
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
 }
 
 .drawer-close-button {
   background: none;
   border: none;
   cursor: pointer;
-  position: absolute; /* Use absolute positioning */
-  top: 15px;
-  right: 15px;
+}
+
+.history-element {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+}
+
+.thumbnail {
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height to make it square */
+  margin-right: 10px;
+  flex-shrink: 0; /* Prevents the image from shrinking too much */
+  object-fit: cover; /* Ensures the image is cropped to fit */
+  object-position: center; /* Centers the image within the container */
+}
+
+.text-container {
+  flex-grow: 1;
+}
+
+.single-line-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

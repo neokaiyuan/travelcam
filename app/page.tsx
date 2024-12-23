@@ -57,6 +57,7 @@ export default function RootPage() {
       <HistoryDrawer
         isOpen={isDrawerOpen}
         toggleDrawer={toggleDrawer}
+        history={history}
         selectedHistoryElementIndex={selectedHistoryElementIndex}
         setSelectedHistoryElementIndex={setSelectedHistoryElementIndex}
       />
