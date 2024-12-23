@@ -3,9 +3,9 @@
 import React, { useRef, useEffect } from "react";
 
 function CameraScreen({
-  setLatestPhoto,
+  saveLatestPhoto,
 }: {
-  setLatestPhoto: React.Dispatch<React.SetStateAction<string>>;
+  saveLatestPhoto: (photo: string) => void;
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -45,7 +45,7 @@ function CameraScreen({
           canvasRef.current.height
         );
         const imageData = canvasRef.current.toDataURL("image/png");
-        setLatestPhoto(imageData);
+        saveLatestPhoto(imageData);
       }
     }
   };

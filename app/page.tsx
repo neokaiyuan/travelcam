@@ -11,28 +11,9 @@ export default function RootPage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [showExplanationScreen, setShowExplanationScreen] =
     useState<boolean>(false);
-  const [latestPhoto, setLatestPhoto] = useState<string>("");
   const [history, setHistory] = useState<HistoryElement[]>([]);
   const [selectedHistoryElementIndex, setSelectedHistoryElementIndex] =
     useState<number | null>(null);
-
-  useEffect(() => {
-    // Do not do anything if user has not taken photo
-    if (!latestPhoto) {
-      return;
-    }
-
-    // Add latest photo to history
-    const newHistoryElement: HistoryElement = {
-      timeImageTaken: new Date(),
-      base64Image: latestPhoto,
-      explanation: "",
-    };
-    setHistory([...history, newHistoryElement]);
-
-    // Show ExplanationScreen
-    setShowExplanationScreen(true);
-  }, [latestPhoto]);
 
   function toggleDrawer() {
     setIsDrawerOpen(!isDrawerOpen);
@@ -43,6 +24,21 @@ export default function RootPage() {
     setShowExplanationScreen(false);
   };
 
+  const saveLatestPhoto = (base64Image: string) => {
+    // Add latest photo to history
+    const newHistoryElement: HistoryElement = {
+      timeImageTaken: new Date(),
+      base64Image: base64Image,
+      explanation: "",
+    };
+    setHistory([...history, newHistoryElement]);
+    // Select the latest photo in history drawer
+    setSelectedHistoryElementIndex(history.length); // The history variable in this context has not been updated with the new element yet
+    // Show explanation screen
+    setShowExplanationScreen(true);
+  };
+
+  // Select a history element to show its explanation
   const selectHistoryElement = (index: number) => {
     setSelectedHistoryElementIndex(index);
     setIsDrawerOpen(false);
@@ -59,7 +55,7 @@ export default function RootPage() {
           selectedHistoryElementIndex={selectedHistoryElementIndex}
         />
       ) : (
-        <CameraScreen setLatestPhoto={setLatestPhoto} />
+        <CameraScreen saveLatestPhoto={saveLatestPhoto} />
       )}
       <HistoryDrawer
         isOpen={isDrawerOpen}
