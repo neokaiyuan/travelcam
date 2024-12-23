@@ -1,0 +1,33 @@
+.camera-screen {
+  position: relative;
+  height: calc(100vh - 50px); /* Adjust based on nav bar height */
+}
+
+.camera-view {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shutter-button {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 4px solid #ccc;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.shutter-button:active {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
