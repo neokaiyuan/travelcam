@@ -2,7 +2,11 @@
 
 import React, { useRef, useEffect } from "react";
 
-function CameraScreen() {
+function CameraScreen({
+  setLatestPhoto,
+}: {
+  setLatestPhoto: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -41,7 +45,7 @@ function CameraScreen() {
           canvasRef.current.height
         );
         const imageData = canvasRef.current.toDataURL("image/png");
-        console.log(imageData);
+        setLatestPhoto(imageData);
       }
     }
   };

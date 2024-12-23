@@ -4,11 +4,17 @@ import { AiOutlineClose } from "react-icons/ai";
 interface HistoryDrawerProps {
   isOpen: boolean;
   toggleDrawer: () => void;
+  selectedHistoryElementIndex: number | null;
+  setSelectedHistoryElementIndex: React.Dispatch<
+    React.SetStateAction<number | null>
+  >;
 }
 
 const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
   isOpen,
   toggleDrawer,
+  selectedHistoryElementIndex,
+  setSelectedHistoryElementIndex,
 }) => {
   return (
     <>
