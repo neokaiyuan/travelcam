@@ -51,7 +51,8 @@ const ExplanationScreen: React.FC<ExplanationScreenProps> = ({
         const textContent = chunk
           .split("\n") // Each chunk can have multiple lines
           .filter((line) => line.startsWith("0")) // 0 means model response text
-          .map((line) => line.slice(3, -1)) // Remove the leading 0:" and trailing " characters
+          // Remove leading 0:" and trailing " characters, and replace \n with actual newline character
+          .map((line) => line.slice(3, -1).replaceAll("\\n", "\n"))
           .join("");
 
         explanation += textContent;
@@ -86,7 +87,10 @@ const ExplanationScreen: React.FC<ExplanationScreenProps> = ({
       <img src={currHistoryElement.base64Image} alt="Current Image" />
       <p>Taken on: {currHistoryElement.timeImageTaken.toLocaleString()}</p>
       {currHistoryElement.explanation && (
-        <p>Explanation: {currHistoryElement.explanation}</p>
+        // Preserve newlines in explanation with pre-wrap style
+        <p style={{ whiteSpace: "pre-wrap" }}>
+          Explanation: {currHistoryElement.explanation}
+        </p>
       )}
     </div>
   );
