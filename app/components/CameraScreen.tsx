@@ -52,7 +52,7 @@ function CameraScreen({
   };
 
   return (
-    <div className="camera-screen">
+    <div data-testid="camera-screen" className="camera-screen">
       <video
         ref={videoRef}
         autoPlay
@@ -65,7 +65,11 @@ function CameraScreen({
         width="640"
         height="480"
       ></canvas>
-      <button className="shutter-button" onClick={takePhoto}></button>
+      <button
+        className="shutter-button"
+        onClick={takePhoto}
+        aria-label="shutter"
+      ></button>
     </div>
   );
 }
