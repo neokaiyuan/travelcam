@@ -1,0 +1,7 @@
+.explanation-container {
+  padding: 20px;
+}
+
+.explanation-text {
+  white-space: pre-wrap; /* Preserve newlines in explanation with pre-wrap style */
+}

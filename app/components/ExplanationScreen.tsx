@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { HistoryElement } from "../types/types";
+import "./ExplanationScreen.css";
 
 interface ExplanationScreenProps {
   history: HistoryElement[];
@@ -82,16 +83,25 @@ const ExplanationScreen: React.FC<ExplanationScreenProps> = ({
   }, [selectedHistoryElementIndex]);
 
   const currHistoryElement = history[selectedHistoryElementIndex];
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(currHistoryElement.timeImageTaken);
+
   return (
     <div>
       <img src={currHistoryElement.base64Image} alt="Current Image" />
-      <p>Taken on: {currHistoryElement.timeImageTaken.toLocaleString()}</p>
-      {currHistoryElement.explanation && (
-        // Preserve newlines in explanation with pre-wrap style
-        <p style={{ whiteSpace: "pre-wrap" }}>
-          Explanation: {currHistoryElement.explanation}
-        </p>
-      )}
+      <div className="explanation-container">
+        <p>{formattedDate}</p>
+        <br />
+        {currHistoryElement.explanation && (
+          <p className="explanation-text">{currHistoryElement.explanation}</p>
+        )}
+      </div>
     </div>
   );
 };
