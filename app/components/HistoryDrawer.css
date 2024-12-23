@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  width: 250px;
+  width: 300px;
   height: 100%;
   background-color: var(--navbar-drawer-bg);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);

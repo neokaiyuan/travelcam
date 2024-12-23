@@ -76,7 +76,16 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                       className="thumbnail"
                     />
                     <div className="text-container">
-                      <p>{new Date(element.timeImageTaken).toLocaleString()}</p>
+                      <p>
+                        {new Intl.DateTimeFormat("en-US", {
+                          hour12: false,
+                          year: "numeric",
+                          month: "short", // 3-letter month abbreviation
+                          day: "2-digit",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }).format(new Date(element.timeImageTaken))}
+                      </p>
                       <p className="preview-text">
                         {element.explanation.replace(/\n/g, " ")}
                       </p>
