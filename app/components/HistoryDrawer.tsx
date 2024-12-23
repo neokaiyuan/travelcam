@@ -35,27 +35,30 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                 in your history drawer.
               </p>
             ) : (
-              history.map((element, index) => (
-                <button
-                  key={index}
-                  onClick={() => selectHistoryElement(index)}
-                  className={`history-element ${
-                    selectedHistoryElementIndex === index ? "selected" : ""
-                  }`}
-                >
-                  <img
-                    src={element.base64Image}
-                    alt="History Image Thumbnail"
-                    className="thumbnail"
-                  />
-                  <div className="text-container">
-                    <p>{new Date(element.timeImageTaken).toLocaleString()}</p>
-                    <p className="preview-text">
-                      {element.explanation.replace(/\n/g, " ")}
-                    </p>
-                  </div>
-                </button>
-              ))
+              history
+                .slice() // Copy the array to avoid modifying the original history array
+                .reverse() // Reverse the array to display in reverse chronological order
+                .map((element, index) => (
+                  <button
+                    key={index}
+                    onClick={() => selectHistoryElement(index)}
+                    className={`history-element ${
+                      selectedHistoryElementIndex === index ? "selected" : ""
+                    }`}
+                  >
+                    <img
+                      src={element.base64Image}
+                      alt="History Image Thumbnail"
+                      className="thumbnail"
+                    />
+                    <div className="text-container">
+                      <p>{new Date(element.timeImageTaken).toLocaleString()}</p>
+                      <p className="preview-text">
+                        {element.explanation.replace(/\n/g, " ")}
+                      </p>
+                    </div>
+                  </button>
+                ))
             )}
           </div>
         </div>
