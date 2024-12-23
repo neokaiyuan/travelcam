@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { HistoryElement } from "../types/types";
 import "./HistoryDrawer.css";
@@ -18,10 +18,34 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
   selectedHistoryElementIndex,
   selectHistoryElement,
 }) => {
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  // Close drawer when user clicks outside of it
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        drawerRef.current &&
+        !drawerRef.current.contains(event.target as Node)
+      ) {
+        toggleDrawer();
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, toggleDrawer]);
+
   return (
     <>
       {isOpen && (
-        <div className="drawer">
+        <div ref={drawerRef} className="drawer">
           <div className="drawer-header">
             <h2 className="drawer-title">History</h2>
             <button onClick={toggleDrawer} className="drawer-close-button">
