@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--navbar-drawer-bg);
+  padding: calc(env(safe-area-inset-top) + 10px) 20px 10px; /* Adjust top padding */
+  color: var(--foreground);
+  height: auto; /* Ensure height is only as much as needed */
+}
+
+.navbar-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.navbar-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}

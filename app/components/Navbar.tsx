@@ -1,5 +1,6 @@
 import React from "react";
 import { FaCamera, FaBars } from "react-icons/fa";
+import "./Navbar.css";
 
 interface NavbarProps {
   toggleDrawer: () => void;
