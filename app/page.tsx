@@ -39,6 +39,7 @@ export default function RootPage() {
   }
 
   const showCamera = () => {
+    setIsDrawerOpen(false);
     setShowExplanationScreen(false);
   };
 
