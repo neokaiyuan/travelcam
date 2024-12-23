@@ -34,7 +34,9 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
               <button
                 key={index}
                 onClick={() => setSelectedHistoryElementIndex(index)}
-                className="history-element"
+                className={`history-element ${
+                  selectedHistoryElementIndex === index ? "selected" : ""
+                }`}
               >
                 <img
                   src={element.base64Image}

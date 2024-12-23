@@ -139,3 +139,9 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.selected {
+  background-color: #101010; /* Darkest grey background color */
+  border: none; /* Remove border */
+  transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition */
+}
