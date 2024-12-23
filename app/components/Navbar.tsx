@@ -3,9 +3,10 @@ import { FaCamera, FaBars } from "react-icons/fa";
 
 interface NavbarProps {
   toggleDrawer: () => void;
+  showCamera: () => void;
 }
 
-export default function Navbar({ toggleDrawer }: NavbarProps) {
+export default function Navbar({ toggleDrawer, showCamera }: NavbarProps) {
   return (
     <nav className="navbar">
       <div className="navbar-icon">
@@ -15,7 +16,9 @@ export default function Navbar({ toggleDrawer }: NavbarProps) {
       </div>
       <div className="navbar-title">Travelcam</div>
       <div className="navbar-icon">
-        <FaCamera size={24} />
+        <button onClick={showCamera}>
+          <FaCamera size={24} />
+        </button>
       </div>
     </nav>
   );

@@ -38,9 +38,13 @@ export default function RootPage() {
     setIsDrawerOpen(!isDrawerOpen);
   }
 
+  const showCamera = () => {
+    setShowExplanationScreen(false);
+  };
+
   return (
     <div>
-      <Navbar toggleDrawer={toggleDrawer} />
+      <Navbar toggleDrawer={toggleDrawer} showCamera={showCamera} />
       {showExplanationScreen ? (
         <ExplanationScreen
           history={history}
