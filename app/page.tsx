@@ -17,6 +17,11 @@ export default function RootPage() {
     useState<number | null>(null);
 
   useEffect(() => {
+    // Do not do anything if user has not taken photo
+    if (!latestPhoto) {
+      return;
+    }
+
     // Add latest photo to history
     const newHistoryElement: HistoryElement = {
       timeImageTaken: new Date(),

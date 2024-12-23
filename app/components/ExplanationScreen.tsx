@@ -19,10 +19,7 @@ const ExplanationScreen: React.FC<ExplanationScreenProps> = ({
 
   return (
     <div>
-      <img
-        src={`data:image/jpeg;base64,${currHistoryElement.base64Image}`}
-        alt="Captured"
-      />
+      <img src={currHistoryElement.base64Image} alt="Current Image" />
       <p>Taken on: {currHistoryElement.timeImageTaken.toLocaleString()}</p>
       {currHistoryElement.explanation && (
         <p>Explanation: {currHistoryElement.explanation}</p>
