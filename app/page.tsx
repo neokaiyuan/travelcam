@@ -7,7 +7,7 @@ import ExplanationScreen from "./components/ExplanationScreen";
 import HistoryDrawer from "./components/HistoryDrawer";
 import { HistoryElement } from "./types/types";
 
-export default function RootPage() {
+export default function HomePage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [showExplanationScreen, setShowExplanationScreen] =
     useState<boolean>(false);

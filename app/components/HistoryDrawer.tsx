@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { HistoryElement } from "../types/types";
