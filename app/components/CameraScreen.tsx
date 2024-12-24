@@ -79,15 +79,17 @@ function CameraScreen({
 
   return (
     <div data-testid="camera-screen" className="camera-screen">
-      <p className="camera-prompt">Take a pic and we&apos;ll explain it!</p>
-      <video
-        ref={videoRef}
-        autoPlay
-        playsInline
-        className="camera-view"
-        style={{ aspectRatio: "1 / 1" }}
-      ></video>
-      <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
+      <div className="camera-view-container">
+        <p className="camera-prompt">Take a pic and we&apos;ll explain it!</p>
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          className="camera-view"
+          style={{ aspectRatio: "1 / 1" }}
+        ></video>
+        <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
+      </div>
       <button
         className="shutter-button"
         onClick={takePhoto}
