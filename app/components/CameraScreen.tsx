@@ -13,7 +13,6 @@ function CameraScreen({
 
   useEffect(() => {
     const videoElement = videoRef.current;
-    const canvasElement = canvasRef.current;
 
     async function enableCamera() {
       try {
@@ -29,12 +28,6 @@ function CameraScreen({
     }
     enableCamera();
 
-    if (canvasElement) {
-      // Set canvas dimensions to match the video element
-      canvasElement.width = videoElement?.videoWidth || 640;
-      canvasElement.height = videoElement?.videoHeight || 480;
-    }
-
     return () => {
       if (videoElement && videoElement.srcObject) {
         const stream = videoElement.srcObject as MediaStream;
@@ -47,13 +40,14 @@ function CameraScreen({
     if (videoRef.current && canvasRef.current) {
       const context = canvasRef.current.getContext("2d");
       if (context) {
-        context.drawImage(
-          videoRef.current,
-          0,
-          0,
-          canvasRef.current.width,
-          canvasRef.current.height
+        const size = Math.min(
+          videoRef.current.videoWidth,
+          videoRef.current.videoHeight
         );
+        canvasRef.current.width = size;
+        canvasRef.current.height = size;
+
+        context.drawImage(videoRef.current, 0, 0, size, size, 0, 0, size, size);
         const imageData = canvasRef.current.toDataURL("image/png");
         saveLatestPhoto(imageData);
       }
@@ -67,11 +61,9 @@ function CameraScreen({
         autoPlay
         playsInline
         className="camera-view"
+        style={{ aspectRatio: "1 / 1" }}
       ></video>
-      <canvas
-        ref={canvasRef}
-        style={{ display: "none", width: "100%", height: "100%" }}
-      ></canvas>
+      <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
       <button
         className="shutter-button"
         onClick={takePhoto}
