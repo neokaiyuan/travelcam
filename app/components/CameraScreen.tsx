@@ -13,6 +13,8 @@ function CameraScreen({
 
   useEffect(() => {
     const videoElement = videoRef.current;
+    const canvasElement = canvasRef.current;
+
     async function enableCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
@@ -26,6 +28,12 @@ function CameraScreen({
       }
     }
     enableCamera();
+
+    if (canvasElement) {
+      // Set canvas dimensions to match the video element
+      canvasElement.width = videoElement?.videoWidth || 640;
+      canvasElement.height = videoElement?.videoHeight || 480;
+    }
 
     return () => {
       if (videoElement && videoElement.srcObject) {
@@ -62,9 +70,7 @@ function CameraScreen({
       ></video>
       <canvas
         ref={canvasRef}
-        style={{ display: "none" }}
-        width="640"
-        height="480"
+        style={{ display: "none", width: "100%", height: "100%" }}
       ></canvas>
       <button
         className="shutter-button"
