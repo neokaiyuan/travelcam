@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { FaSyncAlt } from "react-icons/fa";
 import "./CameraScreen.css";
 
 function CameraScreen({
@@ -10,6 +11,9 @@ function CameraScreen({
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [facingMode, setFacingMode] = useState<"user" | "environment">(
+    "environment"
+  );
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -17,7 +21,7 @@ function CameraScreen({
     async function enableCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
+          video: { facingMode },
         });
         if (videoElement) {
           videoElement.srcObject = stream;
@@ -34,7 +38,7 @@ function CameraScreen({
         stream.getTracks().forEach((track) => track.stop());
       }
     };
-  }, []);
+  }, [facingMode]);
 
   const takePhoto = () => {
     if (videoRef.current && canvasRef.current) {
@@ -69,6 +73,10 @@ function CameraScreen({
     }
   };
 
+  const switchCamera = () => {
+    setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
+  };
+
   return (
     <div data-testid="camera-screen" className="camera-screen">
       <p className="camera-prompt">Take a pic and we&apos;ll explain it!</p>
@@ -86,6 +94,14 @@ function CameraScreen({
         aria-label="shutter"
         data-testid="shutter-button"
       ></button>
+      <button
+        className="switch-camera-button"
+        onClick={switchCamera}
+        aria-label="switch camera"
+        data-testid="switch-camera-button"
+      >
+        <FaSyncAlt />
+      </button>
     </div>
   );
 }

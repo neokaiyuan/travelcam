@@ -10,6 +10,13 @@
   padding-bottom: 100px; /* Add padding to account for the shutter button */
 }
 
+.camera-prompt {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+}
+
 .camera-view {
   width: 100%;
   height: auto;
@@ -40,9 +47,26 @@
   border-color: #999;
 }
 
-.camera-prompt {
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: #666;
-  text-align: center;
+.switch-camera-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #333; /* Dark background color */
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px; /* Adjust font size for the icon */
+  color: #fff; /* Light icon color */
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.switch-camera-button:active {
+  background-color: #555; /* Slightly lighter dark color on active */
+  border-color: #999;
 }
