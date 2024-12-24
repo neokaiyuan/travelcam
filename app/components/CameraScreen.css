@@ -1,6 +1,8 @@
 .camera-screen {
   position: relative;
-  height: calc(100vh - 50px); /* Adjust based on nav bar height */
+  height: calc(
+    100vh - 50px - 100px
+  ); /* Adjust based on nav bar height and shutter button */
   display: flex;
   flex-direction: column;
   align-items: center;
