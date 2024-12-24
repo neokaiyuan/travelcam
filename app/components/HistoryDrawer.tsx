@@ -63,8 +63,6 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
               </p>
             ) : (
               history
-                .slice() // Copy the array to avoid modifying the original history array
-                .reverse() // Reverse the array to display in reverse chronological order
                 .map((element, index) => (
                   <button
                     key={index}
@@ -97,6 +95,7 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                     </div>
                   </button>
                 ))
+                .reverse() // Reverse the array to display in reverse chronological order
             )}
           </div>
         </div>
