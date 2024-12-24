@@ -6,6 +6,9 @@
   padding: calc(env(safe-area-inset-top) + 10px) 20px 10px; /* Adjust top padding */
   color: var(--foreground);
   height: auto; /* Ensure height is only as much as needed */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 .navbar-icon {
