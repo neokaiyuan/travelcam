@@ -60,3 +60,15 @@ describe("HomePage", () => {
     });
   });
 });
+
+describe("Navigation Bar", () => {
+  test("opens history drawer on drawer button press", () => {
+    render(<HomePage />);
+
+    const drawerButton = screen.getByTestId("drawer-button");
+    fireEvent.click(drawerButton);
+
+    const historyDrawer = screen.getByTestId("history-drawer");
+    expect(historyDrawer).toBeVisible();
+  });
+});

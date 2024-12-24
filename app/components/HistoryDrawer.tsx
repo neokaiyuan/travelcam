@@ -47,7 +47,7 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
   return (
     <>
       {isOpen && (
-        <div ref={drawerRef} className="drawer">
+        <div ref={drawerRef} className="drawer" data-testid="history-drawer">
           <div className="drawer-header">
             <h2 className="drawer-title">History</h2>
             <button onClick={toggleDrawer} className="drawer-close-button">

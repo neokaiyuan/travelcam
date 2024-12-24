@@ -11,7 +11,7 @@ export default function Navbar({ toggleDrawer, showCamera }: NavbarProps) {
   return (
     <nav className="navbar">
       <div className="navbar-icon">
-        <button onClick={toggleDrawer}>
+        <button onClick={toggleDrawer} data-testid="drawer-button">
           <FaBars size={24} />
         </button>
       </div>
