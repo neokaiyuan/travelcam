@@ -4,6 +4,8 @@ Travel camera that explains places and objects, translates text, and recommends 
 
 Deployed at: [travelcam.vercel.app](https://travelcam.vercel.app)
 
+⚠️ Travelcam is optimised for mobile. Please view on mobile device or in mobile simulator for best experience.
+
 ## How To Use App
 
 The home page is the Camera Screen. Tap the shutter button to take a photo.
