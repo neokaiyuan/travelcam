@@ -4,6 +4,10 @@ Travel camera that explains places and objects, translates text, and recommends 
 
 Deployed at: [INSERT LINK]
 
+## How To Use App
+
+![screens](https://github.com/user-attachments/assets/d098244b-6329-4fc0-bf7d-9da88e34db94)
+
 ## How To Run App Locally
 
 ### Set Up Environment Variables
