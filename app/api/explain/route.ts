@@ -14,21 +14,30 @@ Classify the primary subject of the photo into one of the following categories, 
 export async function POST(request: Request) {
   const { base64Image } = await request.json();
 
-  const result = await streamText({
-    model: openai("gpt-4o-mini"),
-    system: developerMessage,
-    messages: [
-      {
-        role: "user",
-        content: [
-          {
-            type: "image",
-            image: base64Image,
-          },
-        ],
-      },
-    ],
-  });
+  try {
+    const result = await streamText({
+      model: openai("gpt-4o-mini"),
+      system: developerMessage,
+      messages: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "image",
+              image: base64Image,
+            },
+          ],
+        },
+      ],
+    });
 
-  return result.toDataStreamResponse();
+    return result.toDataStreamResponse();
+  } catch (error) {
+    console.error("Error occurred in route handler:", error);
+    return new Response(JSON.stringify({ message: "Internal Server Error" }), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 }
