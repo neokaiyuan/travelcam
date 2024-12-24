@@ -30,7 +30,13 @@ Unit tests are currently located in the `app` folder next to each component.
 
 ## What I Would Do With More Time
 
-TODO: Fill this in
+- Allow uploads of images taken elsewhere
+- Authentication to save history
+- Deletion of pics in history
+- Chat interface in explanation screen to ask follow-up questions
+- Options to group history based on location, category, or manually
+- Search of history by text
+- Write end-to-end tests for robustness
 
 ## Known Issues
 
