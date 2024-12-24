@@ -1,4 +1,4 @@
 .home-page-container {
-  height: 100dvh;
+  height: 100dvh; /* Set height to visible height to enable accurate scrolling */
   overflow-y: auto;
 }

@@ -16,7 +16,7 @@ export default function HomePage() {
   const [selectedHistoryElementIndex, setSelectedHistoryElementIndex] =
     useState<number>(-1); // -1 means no selected history element; it does not access last element in array
 
-  // Autoscroll when
+  // Autoscroll when generated explanation exceeds screen height
   const homePageRef = useRef<HTMLDivElement>(null);
   const currentExplanation = history[selectedHistoryElementIndex]?.explanation;
   useEffect(() => {

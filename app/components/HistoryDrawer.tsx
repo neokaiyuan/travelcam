@@ -45,6 +45,7 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
     };
   }, [isOpen, toggleDrawer]);
 
+  // Render all history elements in reverse chronological order
   return (
     <>
       {isOpen && (

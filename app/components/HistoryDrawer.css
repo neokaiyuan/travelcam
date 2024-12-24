@@ -48,6 +48,7 @@
   object-position: center; /* Centers the image within the container */
 }
 
+/* This container contains date and preview text on separate lines */
 .text-container {
   flex-grow: 1;
   width: 100%; /* Ensure the text container takes full width of the drawer */
@@ -61,12 +62,14 @@
   width: 100%; /* Ensure it fits within the drawer's width */
 }
 
+/* This refers to the selected history element in the drawer */
 .selected {
   background-color: #101010; /* Darkest grey background color */
   border: none; /* Remove border */
   transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition */
 }
 
+/* This is the placeholder message before a user has taken any photos */
 .no-history-message {
   padding: 10px;
   text-align: left;
