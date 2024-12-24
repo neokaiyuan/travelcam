@@ -25,7 +25,7 @@ Object.defineProperty(navigator, "mediaDevices", {
 HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
   drawImage: jest.fn(),
   toDataURL: jest.fn(() => "data:image/png;base64,photoData"),
-})) as any;
+})) as jest.Mock;
 
 // Mock the toDataURL method separately
 HTMLCanvasElement.prototype.toDataURL = jest.fn(

@@ -3,29 +3,6 @@ import { render, fireEvent } from "@testing-library/react";
 import CameraScreen from "./CameraScreen";
 
 describe("CameraScreen", () => {
-  beforeAll(() => {
-    // Mock the getUserMedia function
-    Object.defineProperty(navigator, "mediaDevices", {
-      value: {
-        getUserMedia: jest.fn().mockResolvedValue({
-          getTracks: () => [{ stop: jest.fn() }],
-        }),
-      },
-      writable: true,
-    });
-
-    // Mock the getContext method
-    HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
-      drawImage: jest.fn(),
-      toDataURL: jest.fn(() => "data:image/png;base64,photoData"),
-    }));
-
-    // Mock the toDataURL method separately
-    HTMLCanvasElement.prototype.toDataURL = jest.fn(
-      () => "data:image/png;base64,photoData"
-    );
-  });
-
   it("should render the camera screen", () => {
     const saveLatestPhoto = jest.fn();
     const { getByTestId } = render(
