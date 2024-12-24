@@ -42,10 +42,12 @@ class MockReadableStream {
           readIndex++;
           return Promise.resolve({ done: false, value });
         } else {
-          return Promise.resolve({ done: true, value: null });
+          return Promise.resolve({ done: true, value: undefined });
         }
       },
       releaseLock: jest.fn(),
+      closed: Promise.resolve(),
+      cancel: jest.fn(),
     };
   }
 
@@ -72,7 +74,7 @@ global.fetch = jest.fn((url) => {
       type: "basic",
       url: "",
       clone: jest.fn(),
-      body: new MockReadableStream(),
+      body: new MockReadableStream() as any, // Force overload specifically for testing
       bodyUsed: false,
       arrayBuffer: jest.fn(),
       blob: jest.fn(),
@@ -103,8 +105,13 @@ global.fetch = jest.fn((url) => {
 // Mock implementation of TextDecoder
 class MockTextDecoder {
   decode(input?: BufferSource): string {
+    // Convert input to Uint8Array if it's an ArrayBufferView
+    const uint8Array =
+      input instanceof ArrayBuffer
+        ? new Uint8Array(input)
+        : new Uint8Array(input?.buffer || []);
     // Simulate decoding by converting the input to a string
-    return input ? String.fromCharCode(...new Uint8Array(input)) : "";
+    return String.fromCharCode(...uint8Array);
   }
 }
 
