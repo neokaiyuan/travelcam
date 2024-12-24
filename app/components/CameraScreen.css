@@ -37,3 +37,10 @@
   background-color: #f0f0f0;
   border-color: #999;
 }
+
+.camera-prompt {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+}
