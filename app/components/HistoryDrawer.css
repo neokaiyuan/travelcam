@@ -4,7 +4,7 @@
   top: 0;
   width: 300px;
   height: 100%;
-  background-color: var(--navbar-drawer-bg);
+  background-color: var(--navbar-drawer-background-color);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
@@ -63,6 +63,9 @@
 }
 
 /* This refers to the selected history element in the drawer */
+.selected {
+  --drawer-selected-bg: #101010;
+}
 .selected {
   background-color: var(--drawer-selected-bg);
   border: none; /* Remove border */
