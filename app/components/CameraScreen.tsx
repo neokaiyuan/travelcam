@@ -69,6 +69,7 @@ function CameraScreen({
         className="shutter-button"
         onClick={takePhoto}
         aria-label="shutter"
+        data-testid="shutter-button"
       ></button>
     </div>
   );
