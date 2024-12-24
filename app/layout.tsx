@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Travelcam",
-  description: "Camera-based travel guide",
+  title: "Travelcam: Camera-Based Travel Guide",
+  description:
+    "Travel camera that explains places and objects, translates text, and recommends itineraries based on the pictures it takes",
 };
 
 export default function RootLayout({
