@@ -31,10 +31,10 @@ History does not persist across browser sessions, and refreshing the page will c
 
 ```zsh
 npm i # Install dependencies
-npm run dev # Start the server
+npm run dev # Start server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in a browser to view the app.
 
 ### Run Tests
 
