@@ -77,8 +77,8 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                       src={element.base64Image}
                       alt="History Image Thumbnail"
                       className="thumbnail"
-                      width={100}
-                      height={100}
+                      width={640}
+                      height={480}
                     />
                     <div className="text-container">
                       <p>

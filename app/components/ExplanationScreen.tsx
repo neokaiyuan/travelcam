@@ -107,8 +107,8 @@ const ExplanationScreen: React.FC<ExplanationScreenProps> = ({
       <Image
         src={currHistoryElement.base64Image}
         alt="Current Image"
-        width={500}
-        height={500}
+        width={640}
+        height={480}
       />
       <div className="explanation-container">
         <p>{formattedDate}</p>
