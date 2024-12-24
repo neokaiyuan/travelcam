@@ -30,6 +30,7 @@
   height: auto;
   aspect-ratio: 1 / 1; /* Ensures the video is square */
   object-fit: cover;
+  max-width: 500px;
 }
 
 .shutter-button {

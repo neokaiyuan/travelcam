@@ -103,8 +103,9 @@ const ExplanationScreen: React.FC<ExplanationScreenProps> = ({
   }).format(currHistoryElement.timeImageTaken);
 
   return (
-    <div data-testid="explanation-screen">
+    <div className="explanation-screen" data-testid="explanation-screen">
       <Image
+        className="explanation-image"
         src={currHistoryElement.base64Image}
         alt="Current Image"
         width={500}
