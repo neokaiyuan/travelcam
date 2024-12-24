@@ -14,7 +14,20 @@
     --secondary-text: #b0b0b0;
     --accent: #1e90ff; /* Dodger Blue */
     --navbar-drawer-bg: #1f1f1f;
+    --drawer-selected-bg: #101010;
     --border: #333333;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --secondary-text: #555555;
+    --accent: #007acc; /* A lighter blue for light mode */
+    --navbar-drawer-bg: #f0f0f0;
+    --drawer-selected-bg: #e0e0e0;
+    --border: #cccccc;
   }
 }
 

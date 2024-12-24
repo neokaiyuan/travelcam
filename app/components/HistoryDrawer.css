@@ -64,7 +64,7 @@
 
 /* This refers to the selected history element in the drawer */
 .selected {
-  background-color: #101010; /* Darkest grey background color */
+  background-color: var(--drawer-selected-bg);
   border: none; /* Remove border */
   transition: background-color 0.3s ease, border 0.3s ease; /* Smooth transition */
 }
