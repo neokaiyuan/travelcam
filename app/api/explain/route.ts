@@ -9,6 +9,8 @@ Classify the primary subject of the photo into one of the following categories, 
 - Text: Translate this text to English and explain its significance
 - Animal: Explain what animal this is, and where one could find more of these animals. Also explain where one could buy soft toys of this animal.
 - Other: Explain what is in the photo
+
+Respond in plain text. Do not use markdown or any other formatting.
 `;
 
 export async function POST(request: Request) {
