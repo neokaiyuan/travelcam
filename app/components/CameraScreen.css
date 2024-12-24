@@ -1,11 +1,17 @@
 .camera-screen {
   position: relative;
   height: calc(100vh - 50px); /* Adjust based on nav bar height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 100px; /* Add padding to account for the shutter button */
 }
 
 .camera-view {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Ensures the video is square */
   object-fit: cover;
 }
 

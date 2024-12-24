@@ -40,14 +40,29 @@ function CameraScreen({
     if (videoRef.current && canvasRef.current) {
       const context = canvasRef.current.getContext("2d");
       if (context) {
-        const size = Math.min(
-          videoRef.current.videoWidth,
-          videoRef.current.videoHeight
-        );
+        const videoWidth = videoRef.current.videoWidth;
+        const videoHeight = videoRef.current.videoHeight;
+        const size = Math.min(videoWidth, videoHeight);
+
+        // Calculate the center point
+        const startX = (videoWidth - size) / 2;
+        const startY = (videoHeight - size) / 2;
+
         canvasRef.current.width = size;
         canvasRef.current.height = size;
 
-        context.drawImage(videoRef.current, 0, 0, size, size, 0, 0, size, size);
+        // Draw the image from the center
+        context.drawImage(
+          videoRef.current,
+          startX,
+          startY,
+          size,
+          size,
+          0,
+          0,
+          size,
+          size
+        );
         const imageData = canvasRef.current.toDataURL("image/png");
         saveLatestPhoto(imageData);
       }
