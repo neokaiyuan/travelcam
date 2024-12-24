@@ -1,0 +1,4 @@
+.home-page-container {
+  height: 100vh; /* or any specific height */
+  overflow-y: auto;
+}

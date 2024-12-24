@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "./components/Navbar";
 import CameraScreen from "./components/CameraScreen";
 import ExplanationScreen from "./components/ExplanationScreen";
 import HistoryDrawer from "./components/HistoryDrawer";
 import { HistoryElement } from "./types/types";
+import "./page.css";
 
 export default function HomePage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -15,9 +16,18 @@ export default function HomePage() {
   const [selectedHistoryElementIndex, setSelectedHistoryElementIndex] =
     useState<number>(-1); // -1 means no selected history element; it does not access last element in array
 
-  function toggleDrawer() {
+  // Autoscroll when
+  const homePageRef = useRef<HTMLDivElement>(null);
+  const currentExplanation = history[selectedHistoryElementIndex]?.explanation;
+  useEffect(() => {
+    if (homePageRef.current) {
+      homePageRef.current.scrollTop = homePageRef.current.scrollHeight;
+    }
+  }, [currentExplanation]);
+
+  const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
-  }
+  };
 
   const showCamera = () => {
     setIsDrawerOpen(false);
@@ -47,7 +57,7 @@ export default function HomePage() {
   };
 
   return (
-    <div>
+    <div ref={homePageRef} className="home-page-container">
       <Navbar toggleDrawer={toggleDrawer} showCamera={showCamera} />
       {showExplanationScreen ? (
         <ExplanationScreen
