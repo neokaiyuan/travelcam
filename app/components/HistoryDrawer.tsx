@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import Image from "next/image";
 import { HistoryElement } from "../types/types";
 import "./HistoryDrawer.css";
 
@@ -72,10 +73,12 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                       selectedHistoryElementIndex === index ? "selected" : ""
                     }`}
                   >
-                    <img
+                    <Image
                       src={element.base64Image}
                       alt="History Image Thumbnail"
                       className="thumbnail"
+                      width={100}
+                      height={100}
                     />
                     <div className="text-container">
                       <p>

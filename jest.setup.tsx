@@ -1,5 +1,16 @@
 import { TextEncoder } from "util";
 
+// Mock next/image
+jest.mock("next/image", () => ({
+  __esModule: true,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  default: (props: any) => {
+    // Return a simple img element with the same props
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img {...props} alt="test" />;
+  },
+}));
+
 // Mock the getUserMedia function
 Object.defineProperty(navigator, "mediaDevices", {
   value: {
@@ -58,62 +69,32 @@ class MockReadableStream {
 }
 
 // Mock ReadableStream globally
+// Disable ESLint for this line because the mock is only for testing
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 global.ReadableStream = MockReadableStream as any;
 
 // Mock global fetch
 global.fetch = jest.fn((url) => {
   if (url === "/api/explain") {
     return Promise.resolve({
-      ok: true,
-      status: 200,
-      json: () =>
-        Promise.resolve({ explanation: "This is a mock explanation." }),
-      headers: new Headers(),
-      redirected: false,
-      statusText: "OK",
-      type: "basic",
-      url: "",
-      clone: jest.fn(),
-      body: new MockReadableStream() as any, // Force overload specifically for testing
-      bodyUsed: false,
-      arrayBuffer: jest.fn(),
-      blob: jest.fn(),
-      formData: jest.fn(),
-      text: jest.fn(),
+      body: new MockReadableStream(),
     });
   }
   // Default mock response for other fetch calls
   return Promise.resolve({
-    ok: true,
-    status: 200,
-    json: () => Promise.resolve({}),
-    headers: new Headers(),
-    redirected: false,
-    statusText: "OK",
-    type: "basic",
-    url: "",
-    clone: jest.fn(),
-    body: null,
-    bodyUsed: false,
-    arrayBuffer: jest.fn(),
-    blob: jest.fn(),
-    formData: jest.fn(),
-    text: jest.fn(),
+    json: () => Promise.resolve({ test: 100 }),
   });
-});
+}) as jest.Mock;
 
 // Mock implementation of TextDecoder
 class MockTextDecoder {
   decode(input?: BufferSource): string {
     // Convert input to Uint8Array if it's an ArrayBufferView
-    const uint8Array =
-      input instanceof ArrayBuffer
-        ? new Uint8Array(input)
-        : new Uint8Array(input?.buffer || []);
+    const uint8Array = new Uint8Array(input as ArrayBuffer);
     // Simulate decoding by converting the input to a string
     return String.fromCharCode(...uint8Array);
   }
 }
 
 // Assign the mock to the global TextDecoder
-global.TextDecoder = MockTextDecoder as any;
+global.TextDecoder = MockTextDecoder as typeof TextDecoder;

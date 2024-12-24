@@ -12,13 +12,14 @@ function CameraScreen({
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
+    const videoElement = videoRef.current;
     async function enableCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: true,
         });
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
+        if (videoElement) {
+          videoElement.srcObject = stream;
         }
       } catch (error) {
         console.error("Error accessing the camera: ", error);
@@ -27,8 +28,8 @@ function CameraScreen({
     enableCamera();
 
     return () => {
-      if (videoRef.current && videoRef.current.srcObject) {
-        const stream = videoRef.current.srcObject as MediaStream;
+      if (videoElement && videoElement.srcObject) {
+        const stream = videoElement.srcObject as MediaStream;
         stream.getTracks().forEach((track) => track.stop());
       }
     };
