@@ -71,7 +71,7 @@ function CameraScreen({
 
   return (
     <div data-testid="camera-screen" className="camera-screen">
-      <p className="camera-prompt">Take a pic and we'll explain it!</p>
+      <p className="camera-prompt">Take a pic and we&apos;ll explain it!</p>
       <video
         ref={videoRef}
         autoPlay
