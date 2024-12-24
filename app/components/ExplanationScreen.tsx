@@ -100,7 +100,9 @@ const ExplanationScreen: React.FC<ExplanationScreenProps> = ({
       <div className="explanation-container">
         <p>{formattedDate}</p>
         <br />
-        {currHistoryElement.explanation && (
+        {!currHistoryElement.explanation ? (
+          <p>Fetching explanation...</p>
+        ) : (
           <p className="explanation-text">{currHistoryElement.explanation}</p>
         )}
       </div>
