@@ -1,20 +1,21 @@
 # Travelcam
 
-Travel camera that explains, translates and recommends based on what you take pictures of
+Travel camera that explains places and objects, translates text, and recommends itineraries based on the pictures it takes
 
-## Getting Started
+Deployed at: [INSERT LINK]
+
+## How To Run App Locally
 
 ### Set Up Environment Variables
 
 1. Copy `.env.example` to new file `.env.local`. Env vars in `.env.local` will only be available server-side unless otherwise specified. `.env.local` is ignored by Git via `.gitignore`.
-2. Create a new OpenAI API key from [OpenAI](https://platform.openai.com/api-keys)
-3. Copy the API key and paste it into the `.env.local` file
+2. Replace `OPENAI_API_KEY` in `.env.local` with your OpenAI API key. If you do not have one, create a new API key at [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys).
 
-### Run App Locally
+### Start Server
 
 ```zsh
-npm i
-npm run dev
+npm i # Install dependencies
+npm run dev # Start the server
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -22,8 +23,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Run Tests
 
 ```zsh
-npm t
+npm t # Run all tests
 ```
+
+Unit tests are currently located in the `app` folder next to each component.
+
+## What I Would Do With More Time
+
+TODO: Fill this in
 
 ## Known Issues
 
