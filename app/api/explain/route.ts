@@ -12,6 +12,16 @@ Classify the primary subject of the photo into one of the following categories, 
 `;
 
 export async function POST(request: Request) {
+  // Report if API key is missing
+  if (!process.env.OPENAI_API_KEY) {
+    console.error("Missing OpenAI API key");
+    return new Response(JSON.stringify({ message: "Missing OpenAI API key" }), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
   const { base64Image } = await request.json();
 
   try {
