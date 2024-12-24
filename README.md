@@ -36,6 +36,7 @@ Unit tests are currently located in the `app` folder next to each component.
 - Chat interface in explanation screen to ask follow-up questions
 - Options to group history based on location, category, or manually
 - Search of history by text
+- Write more unit and integration tests to increase test coverage
 - Write end-to-end tests for robustness
 
 ## Known Issues
