@@ -6,7 +6,17 @@ Deployed at: [travelcam.vercel.app](https://travelcam.vercel.app)
 
 ## How To Use App
 
-![screens](https://github.com/user-attachments/assets/d098244b-6329-4fc0-bf7d-9da88e34db94)
+The home page is the Camera Screen. Tap the shutter button to take a photo.
+
+After taking a photo, the app will show the Explanation Screen, which will show the photo and an explanation from OpenAI. The prompt for this explanation is in `app/api/explain/route.ts` and can be customized.
+
+The hamburger button in the top left opens the History Drawer, which shows all photos taken and a preview of their explanations in reverse chronological order. Tap any item in the drawer to open the Explanation Screen for that item. When the drawer is open, tap anywhere outside the drawer to close it.
+
+The camera button in the top right navigates back to the Camera Screen.
+
+History does not persist across browser sessions, and refreshing the page will clear all history.
+
+![app screens](https://github.com/user-attachments/assets/d098244b-6329-4fc0-bf7d-9da88e34db94)
 
 ## How To Run App Locally
 
