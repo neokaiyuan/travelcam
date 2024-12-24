@@ -1,3 +1,5 @@
+import { TextEncoder } from "util";
+
 // Mock the getUserMedia function
 Object.defineProperty(navigator, "mediaDevices", {
   value: {
@@ -26,8 +28,23 @@ class MockReadableStream {
   constructor() {}
 
   getReader() {
+    const textEncoder = new TextEncoder();
+    const plainText = "Mock explanation";
+    let readIndex = 0;
+
     return {
-      read: () => Promise.resolve({ done: true, value: null }),
+      read: () => {
+        if (readIndex < plainText.length) {
+          const value = textEncoder.encode(
+            // Simulate expected model response format
+            `0:"${plainText.slice(readIndex, readIndex + 1)}"`
+          );
+          readIndex++;
+          return Promise.resolve({ done: false, value });
+        } else {
+          return Promise.resolve({ done: true, value: null });
+        }
+      },
       releaseLock: jest.fn(),
     };
   }

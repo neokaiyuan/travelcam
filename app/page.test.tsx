@@ -1,5 +1,11 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  act,
+  waitFor,
+} from "@testing-library/react";
 import HomePage from "./page";
 
 describe("HomePage", () => {
@@ -8,7 +14,7 @@ describe("HomePage", () => {
     (fetch as jest.Mock).mockClear();
   });
 
-  it("should render the CameraScreen component", () => {
+  it("should render CameraScreen component on initial load", () => {
     render(<HomePage />);
 
     // Assuming CameraScreen has a specific text or role you can query
@@ -16,15 +22,41 @@ describe("HomePage", () => {
     expect(cameraScreenElement).toBeInTheDocument();
   });
 
-  it("should display the ExplanationScreen when the shutter button is pressed", () => {
+  it("should display ExplanationScreen after shutter button pressed", async () => {
     render(<HomePage />);
 
     // Assuming the shutter button has a test ID of "shutter-button"
     const shutterButton = screen.getByTestId("shutter-button");
-    fireEvent.click(shutterButton);
+
+    // Wrap the click event in act to simulate browser behavior
+    await act(async () => {
+      fireEvent.click(shutterButton);
+    });
 
     // Assuming ExplanationScreen has a specific test ID you can query
     const explanationScreenElement = screen.getByTestId("explanation-screen");
     expect(explanationScreenElement).toBeInTheDocument();
+  });
+
+  it("should show streamed explanation text on ExplanationScreen after shutter button pressed", async () => {
+    render(<HomePage />);
+
+    // Assuming the shutter button has a test ID of "shutter-button"
+    const shutterButton = screen.getByTestId("shutter-button");
+
+    // Wrap the click event in act to simulate browser behavior
+    await act(async () => {
+      fireEvent.click(shutterButton);
+    });
+
+    // Wait for the ExplanationScreen to appear
+    const explanationScreenElement = await screen.findByTestId(
+      "explanation-screen"
+    );
+
+    // Verify the mock explanation is rendered
+    await waitFor(() => {
+      expect(explanationScreenElement).toHaveTextContent("Mock explanation");
+    });
   });
 });
