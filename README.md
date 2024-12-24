@@ -1,4 +1,4 @@
-# Travelcam
+# Travelcam: Camera-Based Travel Guide
 
 Travel camera that explains places and objects, translates text, and recommends itineraries based on the pictures it takes
 
